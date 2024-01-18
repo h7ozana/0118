@@ -4,6 +4,6 @@ terraform {
     region  = "ap-northeast-2"
     profile = "kanyi-po"
     key     = "terraformstatefile"
-    bucket  = "terraformstatebucket-sample-project-nginx"
+    bucket  = "newjeans"
   }
 }
