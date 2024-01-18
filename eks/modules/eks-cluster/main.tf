@@ -69,7 +69,7 @@ module "eks" {
   aws_auth_roles = [
     {
       rolearn  = var.rolearn
-      username = "skanyi"
+      username = "user1"
       groups   = ["system:masters"]
     },
   ]
