@@ -23,9 +23,9 @@ variable "cluster_name" {
   default = "tf-cluster"
 }
 
-# variable "rolearn" {
-#   description = "Add admin role to the aws-auth configmap"
-# }
+variable "rolearn" {
+  description = "Add admin role to the aws-auth configmap"
+}
 
 ################################################################################
 # ALB Controller Variables
