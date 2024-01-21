@@ -31,8 +31,9 @@ module "vpc" {
   }
 
   tags = {
-    Terraform   = "true"
+    Terraform  = "true"
     Environment = "dev"
+    "kubernetes.io/cluster/tf-cluster" = "shared"  # 태그를 추가합니다.
   }
 }
 
