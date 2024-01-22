@@ -4,6 +4,6 @@ terraform {
     region  = "ap-northeast-2"
     profile = "default"
     key     = "terraformstatefile"
-    bucket  = "newjeans"
+    bucket  = "kazuha"
   }
 }
