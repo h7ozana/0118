@@ -1,0 +1,30 @@
+https://argo-cd.readthedocs.io/en/stable/getting_started/
+
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+
+argocd admin initial-password -n argocd
+kubectl port-forward svc/argocd-server -n argocd 8888:443
+
+
+kubectl get configmap argocd-cm -n argocd -o yaml > argocd-cm.yml
+kubectl edit configmap argocd-cm -n argocd
+data:
+  accounts.newadmin: apiKey, login
+
+kubectl apply -f argocd-cm.yml -n argocd --force
+
+curl -LO https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+
+chmod +x argocd-linux-amd64
+
+sudo mv argocd-linux-amd64 /usr/local/bin/argocd
+
+
+argocd account update-password \
+  --account newadmin \
+  --current-password ZzpPS1ZzslRRCYIE \
+  --new-password newadmin \
+  --server https://aab5d12d0733f435986b4ef8b91ca05d-961061922.ap-northeast-2.elb.amazonaws.com
